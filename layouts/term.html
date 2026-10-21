@@ -1,0 +1,9 @@
+{{ define "main" }}
+<header class="page-head">
+  <a class="back" href="{{ .Parent.RelPermalink }}">← {{ .Parent.Title }}</a>
+  <h1>#{{ .Title }}</h1>
+</header>
+{{ $paginator := .Paginate .Pages }}
+<ul class="post-list">{{ range $paginator.Pages }}{{ partial "post-item.html" . }}{{ end }}</ul>
+{{ partial "pager.html" . }}
+{{ end }}

@@ -1,4 +1,39 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://devanandanj.github.io/'
 locale = 'en-us'
-title = 'My New Hugo Project'
-theme = "PaperMod"
+title = 'Devanandan J'
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 10
+
+[taxonomies]
+  tag = 'tags'
+
+[params]
+  author = 'Devanandan J'
+  description = 'Notes and projects on FPGA design, digital hardware and low-latency systems.'
+  role = 'FPGA · Digital design · Low-latency systems'
+  intro = "I build hardware for things that need to be fast — currently a 1G Ethernet MAC and an ITCH 5.0 order book on a Virtex-5. This is where I write up what I learn along the way."
+  github = 'https://github.com/devanandanj'
+  # linkedin = 'https://www.linkedin.com/in/...'
+  # email = 'you@example.com'
+
+[menus]
+  [[menus.main]]
+    name = 'Writing'
+    pageRef = '/posts'
+    weight = 10
+  [[menus.main]]
+    name = 'Tags'
+    pageRef = '/tags'
+    weight = 20
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[outputs]
+  home = ['html', 'rss']

@@ -1,0 +1,24 @@
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="{{ "/" | relURL }}" aria-label="{{ site.Title }} — home">
+      <span class="brand-mark" aria-hidden="true"></span>{{ site.Title }}
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        {{- $current := . }}
+        {{- range site.Menus.main }}
+          {{- $active := or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }}
+          <li><a href="{{ .URL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name }}</a></li>
+        {{- end }}
+        {{- with site.Params.github }}
+          <li><a href="{{ . }}" rel="me noopener" aria-label="GitHub">{{ partial "icon.html" "github" }}</a></li>
+        {{- end }}
+        <li>
+          <button class="theme-toggle" type="button" aria-label="Toggle colour theme">
+            {{ partial "icon.html" "sun" }}{{ partial "icon.html" "moon" }}
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,14 @@
+# Projects shown on the home page. Add one [[project]] block per project.
+
+[[project]]
+  name = "Low-latency 1G Ethernet MAC"
+  description = "GMII Ethernet MAC in SystemVerilog for a Xilinx Virtex-5, built as the network front end for an ITCH feed handler. Verified with cocotb + Verilator."
+  tags = ["SystemVerilog", "FPGA", "cocotb"]
+  url = "https://github.com/devanandanj/low-latency-1g-ethernet"
+  status = "In progress"
+
+[[project]]
+  name = "ITCH 5.0 order book"
+  description = "Hardware order-book replication from NASDAQ ITCH 5.0 market data, fed directly from the Ethernet MAC."
+  tags = ["FPGA", "Market data", "HFT"]
+  status = "In progress"

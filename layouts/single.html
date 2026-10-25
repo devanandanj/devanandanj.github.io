@@ -1,24 +1,21 @@
 {{ define "main" }}
-<article>
+<div class="wrap">
   <header class="post-head">
     <h1>{{ .Title }}</h1>
-    <p class="muted">
-      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
-      · {{ math.Max 1 .ReadingTime | int }} min read
-      {{ if .Draft }}· <span class="draft">[draft]</span>{{ end }}
-      {{ range .GetTerms "tags" }} · <a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
-    </p>
+    <p class="meta">{{ .Date.Format "2 January 2006" }} · {{ .WordCount }} words{{ if .Draft }} · draft{{ end }}</p>
+    {{ with .GetTerms "tags" }}<p class="tags">{{ range . }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}</p>{{ end }}
   </header>
 
-  {{ if and (gt .WordCount 400) (ne .Params.toc false) .Fragments.Headings }}
-    <details class="toc"><summary>contents</summary>{{ .TableOfContents }}</details>
-  {{ end }}
+  <div class="post-body">
+    <article class="prose">{{ .Content }}</article>
+    {{ if and .Fragments.Headings (ne .Params.toc false) }}
+      <aside class="toc">{{ .TableOfContents }}</aside>
+    {{ end }}
+  </div>
 
-  <div class="prose">{{ .Content }}</div>
-
-  <nav class="post-nav">
-    {{ with .PrevInSection }}<a href="{{ .RelPermalink }}">← {{ .Title }}</a>{{ end }}
-    {{ with .NextInSection }}<a href="{{ .RelPermalink }}">{{ .Title }} →</a>{{ end }}
+  <nav class="page-nav" aria-label="More posts">
+    {{ with .NextInSection }}<a href="{{ .RelPermalink }}"><small>Newer</small>{{ .Title }}</a>{{ else }}<span></span>{{ end }}
+    {{ with .PrevInSection }}<a class="next" href="{{ .RelPermalink }}"><small>Older</small>{{ .Title }}</a>{{ end }}
   </nav>
-</article>
+</div>
 {{ end }}

@@ -1,5 +1,6 @@
 {{ define "main" }}
-<h1>404</h1>
-<p>packet dropped. that page doesn't exist.</p>
-<p><a href="{{ "/" | relURL }}">← home</a></p>
+<div class="wrap">
+  <h1 class="page-title">404</h1>
+  <p>That page doesn't exist. <a href="{{ "/" | relURL }}">Back home</a>.</p>
+</div>
 {{ end }}

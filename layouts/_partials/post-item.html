@@ -1,4 +1,10 @@
-<li>
-  <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
-  <a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if .Draft }} <span class="draft">[draft]</span>{{ end }}
-</li>
+{{- $src := "" }}
+{{- with .Params.cover }}{{ with $.Resources.Get . }}{{ $src = .RelPermalink }}{{ else }}{{ $src = relURL . }}{{ end }}{{ end }}
+<article class="entry{{ if not $src }} no-thumb{{ end }}">
+  {{ with $src }}<a class="thumb" href="{{ $.RelPermalink }}" tabindex="-1"><img src="{{ . }}" alt="" loading="lazy"></a>{{ end }}
+  <div>
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+    <p class="meta">{{ .Date.Format "2 January 2006" }} · {{ .WordCount }} words{{ if .Draft }} · draft{{ end }}</p>
+    {{ with .Description }}<p class="desc">{{ . }}</p>{{ end }}
+  </div>
+</article>

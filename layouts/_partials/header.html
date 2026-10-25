@@ -1,9 +1,9 @@
 <header class="site-header wrap">
-  <a class="brand" href="{{ "/" | relURL }}">~/{{ site.Params.handle }}</a>
+  <a class="site-name" href="{{ "/" | relURL }}">{{ site.Title }}</a>
   <nav aria-label="Main">
-    {{- $current := . }}
+    {{- $cur := . }}
     {{- range site.Menus.main }}
-      <a href="{{ .URL }}"{{ if or ($current.IsMenuCurrent "main" .) ($current.HasMenuCurrent "main" .) }} aria-current="page"{{ end }}>{{ .Name }}</a>
+      <a href="{{ .URL }}"{{ if or ($cur.IsMenuCurrent "main" .) ($cur.HasMenuCurrent "main" .) }} aria-current="page"{{ end }}>{{ .Name }}</a>
     {{- end }}
   </nav>
 </header>

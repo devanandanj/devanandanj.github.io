@@ -1,36 +1,32 @@
 {{ define "main" }}
-<section class="intro">
-  <p class="hello">hello, my name is</p>
-  <h1 class="name">{{ site.Title }}<span class="cursor" aria-hidden="true"></span></h1>
-  {{ with site.Params.intro }}<p>{{ . | markdownify }}</p>{{ end }}
-  <p class="links">
-    {{ with site.Params.github }}<a href="{{ . }}" rel="me">github</a>{{ end }}
-    {{ with site.Params.linkedin }}<a href="{{ . }}" rel="me">linkedin</a>{{ end }}
-    {{ with site.Params.email }}<a href="mailto:{{ . }}">email</a>{{ end }}
-  </p>
+<section class="hero"{{ with site.Params.hero }} style="--hero: url('{{ relURL . }}')"{{ end }}>
+  <div class="wrap">
+    <h1>{{ site.Params.author }}</h1>
+    {{ with site.Params.tagline }}<p class="tagline">{{ . }}</p>{{ end }}
+    <p class="hero-links">
+      {{ with site.Params.github }}<a href="{{ . }}" rel="me">github</a>{{ end }}
+      {{ with site.Params.linkedin }}<a href="{{ . }}" rel="me">linkedin</a>{{ end }}
+      {{ with site.Params.email }}<a href="mailto:{{ . }}">email</a>{{ end }}
+    </p>
+  </div>
 </section>
 
-<section>
-  <h2>writing</h2>
-  {{ with first 10 (where site.RegularPages "Section" "posts") }}
-    <ul class="posts">{{ range . }}{{ partial "post-item.html" . }}{{ end }}</ul>
-  {{ else }}
-    <p class="muted">nothing yet. soon.</p>
-  {{ end }}
-</section>
+<div class="wrap">
+  {{ with site.Params.intro }}<p class="intro">{{ . | markdownify }}</p>{{ end }}
 
-{{ with hugo.Data.projects.project }}
-<section>
-  <h2>projects</h2>
-  <ul class="projects">
+  <h2>Recent</h2>
+  {{ $posts := where site.RegularPages "Section" "posts" }}
+  {{ range first 6 $posts }}{{ partial "post-item.html" . }}{{ else }}<p class="meta">Nothing published yet.</p>{{ end }}
+  {{ if gt (len $posts) 6 }}<p class="center"><a class="button" href="{{ "posts/" | relURL }}">Show more</a></p>{{ end }}
+
+  {{ with hugo.Data.projects.project }}
+  <h2 id="projects">Projects</h2>
+  <dl class="projects">
     {{ range . }}
-    <li>
-      {{ if .url }}<a href="{{ .url }}">{{ .name }}</a>{{ else }}<span class="title">{{ .name }}</span>{{ end }}
-      {{ with .status }}<span class="muted">({{ lower . }})</span>{{ end }}
-      <p>{{ .description }}</p>
-    </li>
+      <dt>{{ if .url }}<a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}{{ with .status }} <span class="meta">· {{ lower . }}</span>{{ end }}</dt>
+      <dd>{{ .description }}</dd>
     {{ end }}
-  </ul>
-</section>
-{{ end }}
+  </dl>
+  {{ end }}
+</div>
 {{ end }}

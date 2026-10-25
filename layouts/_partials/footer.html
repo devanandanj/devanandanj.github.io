@@ -1,4 +1,3 @@
 <footer class="site-footer wrap">
-  <span>© {{ now.Year }} {{ site.Params.author }}</span>
-  {{ with site.Home.OutputFormats.Get "rss" }}<a href="{{ .RelPermalink }}">rss</a>{{ end }}
+  <p class="copy">© {{ now.Year }} {{ site.Params.author }}</p>
 </footer>

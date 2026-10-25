@@ -11,22 +11,27 @@ enableRobotsTXT = true
 
 [params]
   author = 'Devanandan J'
-  handle = 'devanandanj'
-  description = 'Notes and projects on FPGA design, digital hardware and low-latency systems.'
-  intro = "I'm a student building FPGA hardware for things that need to be fast. Right now that's a 1G Ethernet MAC and an ITCH 5.0 order book on an old Virtex-5. I write down what I learn here."
-  github = 'https://github.com/devanandanj'
-  # linkedin = 'https://www.linkedin.com/in/...'
-  # email = 'you@example.com'
+  tagline = "I'm a student building FPGA hardware for things that need to be fast."
+  # description = "I'm a student building FPGA hardware for things that need to be fast. Right now that's a 1G Ethernet MAC and an ITCH 5.0 order book on an old Virtex-5. I write down what I learn here."
+  # intro = "I'm a student building FPGA hardware for things that need to be fast. Right now that's a 1G Ethernet MAC and an ITCH 5.0 order book on an old Virtex-5. I write down what I learn here."
+  Github = 'https://github.com/devanandanj'
+  Linkedin = 'https://www.linkedin.com/in/devanandan-j'
+  # hero = 'images/hero.jpg'  # optional banner photo in static/
+  Email = 'devanandan622005@gmail.com'
 
 [menus]
   [[menus.main]]
-    name = 'writing'
+    name = 'Blog'
     pageRef = '/posts'
     weight = 10
   [[menus.main]]
-    name = 'tags'
-    pageRef = '/tags'
+    name = 'Projects'
+    url = '/#projects'
     weight = 20
+  #[[menus.main]]
+  #  name = 'Tags'
+  #  pageRef = '/tags'
+  #  weight = 30
 
 [markup]
   [markup.highlight]

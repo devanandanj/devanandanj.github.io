@@ -1,11 +1,8 @@
 {{ define "main" }}
-<h1>{{ .Title | lower }}</h1>
-{{ with .Description }}<p class="muted">{{ . }}</p>{{ end }}
-{{ $paginator := .Paginate .RegularPages }}
-{{ with $paginator.Pages }}
-  <ul class="posts">{{ range . }}{{ partial "post-item.html" . }}{{ end }}</ul>
-{{ else }}
-  <p class="muted">nothing here yet.</p>
-{{ end }}
-{{ partial "pager.html" . }}
+<div class="wrap">
+  <h1 class="page-title">{{ .Title }}</h1>
+  {{ $paginator := .Paginate .RegularPages }}
+  {{ range $paginator.Pages }}{{ partial "post-item.html" . }}{{ else }}<p class="meta">Nothing here yet.</p>{{ end }}
+  {{ partial "pager.html" . }}
+</div>
 {{ end }}

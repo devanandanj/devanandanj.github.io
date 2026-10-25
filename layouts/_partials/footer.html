@@ -1,10 +1,4 @@
-<footer class="site-footer">
-  <div class="wrap">
-    <span>© {{ now.Year }} {{ site.Params.author }}</span>
-    <span class="footer-links">
-      {{ with site.Params.github }}<a href="{{ . }}" rel="me noopener">GitHub</a>{{ end }}
-      {{ with site.Params.linkedin }}<a href="{{ . }}" rel="me noopener">LinkedIn</a>{{ end }}
-      {{ with site.Home.OutputFormats.Get "rss" }}<a href="{{ .RelPermalink }}">RSS</a>{{ end }}
-    </span>
-  </div>
+<footer class="site-footer wrap">
+  <span>© {{ now.Year }} {{ site.Params.author }}</span>
+  {{ with site.Home.OutputFormats.Get "rss" }}<a href="{{ .RelPermalink }}">rss</a>{{ end }}
 </footer>

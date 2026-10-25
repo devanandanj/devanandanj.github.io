@@ -12,3 +12,10 @@
   description = "Hardware order-book replication from NASDAQ ITCH 5.0 market data, fed directly from the Ethernet MAC."
   tags = ["FPGA", "Market data", "HFT"]
   status = "In progress"
+
+[[project]]
+  name = "Protocol emulator ASIC"
+  description = "A programmable pin-bit-banging core that speaks UART, SPI, and I²C from firmware. Jane Street 2027 ASIC competition entry, targeting Tiny Tapeout on IHP CMOS5L."
+  tags = ["JANE STREET", "ASIC"]
+  url = "https://github.com/devanandanj/protocol-emulator-asic"
+  status = "In progress"

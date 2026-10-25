@@ -1,18 +1,11 @@
 {{ define "main" }}
-<header class="page-head">
-  <h1>{{ .Title }}</h1>
-  {{ with .Description }}<p class="lede">{{ . }}</p>{{ end }}
-</header>
-
+<h1>{{ .Title | lower }}</h1>
+{{ with .Description }}<p class="muted">{{ . }}</p>{{ end }}
 {{ $paginator := .Paginate .RegularPages }}
-{{ range $paginator.Pages.GroupByDate "2006" }}
-  <section class="year-group">
-    <h2 class="year">{{ .Key }}</h2>
-    <ul class="post-list">{{ range .Pages }}{{ partial "post-item.html" . }}{{ end }}</ul>
-  </section>
+{{ with $paginator.Pages }}
+  <ul class="posts">{{ range . }}{{ partial "post-item.html" . }}{{ end }}</ul>
 {{ else }}
-  <p class="empty">Nothing here yet.</p>
+  <p class="muted">nothing here yet.</p>
 {{ end }}
-
 {{ partial "pager.html" . }}
 {{ end }}

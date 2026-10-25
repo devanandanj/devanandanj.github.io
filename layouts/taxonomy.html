@@ -1,14 +1,10 @@
 {{ define "main" }}
-<header class="page-head">
-  <h1>{{ .Title }}</h1>
-</header>
-{{ with .Data.Terms.ByCount }}
-  <ul class="term-cloud">
-    {{ range . }}
-      <li><a class="chip" href="{{ .Page.RelPermalink }}">#{{ .Page.LinkTitle }} <span>{{ .Count }}</span></a></li>
-    {{ end }}
-  </ul>
-{{ else }}
-  <p class="empty">No tags yet.</p>
-{{ end }}
+<h1>tags</h1>
+<ul class="posts">
+  {{ range .Data.Terms.ByCount }}
+    <li><a href="{{ .Page.RelPermalink }}">#{{ .Page.LinkTitle }}</a> <span class="muted">({{ .Count }})</span></li>
+  {{ else }}
+    <li class="muted">no tags yet.</li>
+  {{ end }}
+</ul>
 {{ end }}

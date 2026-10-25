@@ -11,20 +11,20 @@ enableRobotsTXT = true
 
 [params]
   author = 'Devanandan J'
+  handle = 'devanandanj'
   description = 'Notes and projects on FPGA design, digital hardware and low-latency systems.'
-  role = 'FPGA · Digital design · Low-latency systems'
-  intro = "I build hardware for things that need to be fast — currently a 1G Ethernet MAC and an ITCH 5.0 order book on a Virtex-5. This is where I write up what I learn along the way."
+  intro = "I'm a student building FPGA hardware for things that need to be fast. Right now that's a 1G Ethernet MAC and an ITCH 5.0 order book on an old Virtex-5. I write down what I learn here."
   github = 'https://github.com/devanandanj'
   # linkedin = 'https://www.linkedin.com/in/...'
   # email = 'you@example.com'
 
 [menus]
   [[menus.main]]
-    name = 'Writing'
+    name = 'writing'
     pageRef = '/posts'
     weight = 10
   [[menus.main]]
-    name = 'Tags'
+    name = 'tags'
     pageRef = '/tags'
     weight = 20
 

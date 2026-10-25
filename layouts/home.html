@@ -1,53 +1,36 @@
 {{ define "main" }}
-<section class="hero">
-  {{ with site.Params.role }}<p class="eyebrow"><span class="pulse" aria-hidden="true"></span>{{ . }}</p>{{ end }}
-  <h1>{{ site.Title }}</h1>
-  {{ with site.Params.intro }}<p class="lede">{{ . }}</p>{{ end }}
-  <div class="hero-links">
-    {{ with site.Params.github }}<a class="btn btn-primary" href="{{ . }}" rel="me noopener">{{ partial "icon.html" "github" }}GitHub</a>{{ end }}
-    {{ with site.Params.email }}<a class="btn" href="mailto:{{ . }}">Email</a>{{ end }}
-    {{ with site.Params.linkedin }}<a class="btn" href="{{ . }}" rel="me noopener">LinkedIn</a>{{ end }}
-    <a class="btn" href="{{ "posts/" | relURL }}">Read the notes {{ partial "icon.html" "arrow" }}</a>
-  </div>
+<section class="intro">
+  <p class="hello">hello, my name is</p>
+  <h1 class="name">{{ site.Title }}<span class="cursor" aria-hidden="true"></span></h1>
+  {{ with site.Params.intro }}<p>{{ . | markdownify }}</p>{{ end }}
+  <p class="links">
+    {{ with site.Params.github }}<a href="{{ . }}" rel="me">github</a>{{ end }}
+    {{ with site.Params.linkedin }}<a href="{{ . }}" rel="me">linkedin</a>{{ end }}
+    {{ with site.Params.email }}<a href="mailto:{{ . }}">email</a>{{ end }}
+  </p>
+</section>
+
+<section>
+  <h2>writing</h2>
+  {{ with first 10 (where site.RegularPages "Section" "posts") }}
+    <ul class="posts">{{ range . }}{{ partial "post-item.html" . }}{{ end }}</ul>
+  {{ else }}
+    <p class="muted">nothing yet. soon.</p>
+  {{ end }}
 </section>
 
 {{ with hugo.Data.projects.project }}
-<section class="section">
-  <h2 class="section-title">Projects</h2>
-  <div class="cards">
+<section>
+  <h2>projects</h2>
+  <ul class="projects">
     {{ range . }}
-    {{ if .url }}
-      <a class="card" href="{{ .url }}" rel="noopener">{{ partial "inline/card-body.html" . }}</a>
-    {{ else }}
-      <div class="card">{{ partial "inline/card-body.html" . }}</div>
+    <li>
+      {{ if .url }}<a href="{{ .url }}">{{ .name }}</a>{{ else }}<span class="title">{{ .name }}</span>{{ end }}
+      {{ with .status }}<span class="muted">({{ lower . }})</span>{{ end }}
+      <p>{{ .description }}</p>
+    </li>
     {{ end }}
-    {{ end }}
-  </div>
+  </ul>
 </section>
 {{ end }}
-
-<section class="section">
-  <div class="section-head">
-    <h2 class="section-title">Recent writing</h2>
-    <a class="more" href="{{ "posts/" | relURL }}">All posts {{ partial "icon.html" "arrow" }}</a>
-  </div>
-  {{ $posts := where site.RegularPages "Section" "posts" }}
-  {{ with first 5 $posts }}
-    <ul class="post-list">{{ range . }}{{ partial "post-item.html" . }}{{ end }}</ul>
-  {{ else }}
-    <p class="empty">Nothing published yet — first write-up coming soon.</p>
-  {{ end }}
-</section>
-{{ end }}
-
-{{ define "_partials/inline/card-body.html" }}
-  <div class="card-head">
-    <h3>{{ .name }}</h3>
-    {{ if .url }}{{ partial "icon.html" "external" }}{{ end }}
-  </div>
-  <p>{{ .description }}</p>
-  <div class="card-foot">
-    {{ with .status }}<span class="status">{{ . }}</span>{{ end }}
-    {{ range .tags }}<span class="chip">{{ . }}</span>{{ end }}
-  </div>
 {{ end }}

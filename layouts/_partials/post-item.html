@@ -1,7 +1,4 @@
-<li class="post-item">
-  <a href="{{ .RelPermalink }}">
-    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
-    <span class="post-item-title">{{ .Title }}{{ if .Draft }} <span class="badge">Draft</span>{{ end }}</span>
-    <span class="post-item-meta">{{ math.Max 1 .ReadingTime | int }} min</span>
-  </a>
+<li>
+  <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+  <a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ if .Draft }} <span class="draft">[draft]</span>{{ end }}
 </li>

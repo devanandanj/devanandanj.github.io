@@ -1,0 +1,17 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+---
+<p class="sub">on <a href="https://github.com/devanandanj">github.com/devanandanj</a></p>
+{% assign projects = site.projects | sort: "order" | reverse %}
+{% for p in projects %}
+{% assign body = p.content | strip %}
+<article class="card{% if p.status == "in progress" %} active{% endif %}">
+  <h2>{% if body != "" %}<a href="{{ p.url }}">{{ p.title | escape }}</a>{% else %}{{ p.title | escape }}{% endif %}</h2>
+  <p class="status">{{ p.status }}{% if p.when %} ({{ p.when }}){% endif %}</p>
+  {% if p.repo %}<p class="repo"><a href="{{ p.repo }}">{{ p.repo }}</a></p>{% endif %}
+  <p class="desc">{{ p.description | escape }}</p>
+  {% if p.image %}<img src="{{ p.image }}" alt="" loading="lazy">{% endif %}
+</article>
+{% endfor %}

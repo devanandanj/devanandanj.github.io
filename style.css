@@ -1,0 +1,44 @@
+* { box-sizing: border-box; }
+body {
+  max-width: 50rem; margin: 0 auto; padding: 1.5rem;
+  background: #181818; color: #c8c5cc;
+  font: 17px/1.6 Cantarell, "Segoe UI", Ubuntu, Helvetica, Arial, sans-serif;
+  color-scheme: dark;
+}
+h1, h2 { color: #e4e4ef; }
+h1, h2 { font-weight: 400; line-height: 1.25; }
+h2 { margin-top: 2.5rem; }
+a { color: #73c936; text-decoration: none; }
+a:hover { text-decoration: underline; }
+small { color: #95919c; }
+img { max-width: 100%; }
+li { margin-top: .35rem; }
+pre { padding: 1rem; overflow-x: auto; background: #222; }
+code { font: .875em ui-monospace, Menlo, Consolas, monospace; overflow-wrap: anywhere; }
+pre code { overflow-wrap: normal; }
+p > a { overflow-wrap: anywhere; }
+header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem; }
+nav { display: flex; gap: 1.25rem; }
+
+h1 { margin: 2rem 0 0; font-size: clamp(34px, 9vw, 64px); line-height: 1.1; text-align: center; }
+.sub, .status, .repo { margin: 0; text-align: center; overflow-wrap: anywhere; }
+.sub { margin-bottom: 2.5rem; }
+.card { margin-bottom: 12px; padding: 20px clamp(16px, 12%, 98px) 24px; border: 1px solid #484848; }
+.card.active { border: 3px solid #f43841; background: #1c1c1c; }
+.card h2 { margin: 0; font-size: 28px; text-align: center; }
+.status { color: #e4e4ef; font-size: 21px; }
+.desc { margin: 1rem 0 0; }
+.card img { display: block; width: 100%; margin-top: 1rem; }
+
+.home { display: grid; place-items: center; min-height: 100vh; text-align: center; }
+.home h1 { margin: 0 0 5px; font-size: clamp(40px, 11vw, 80px); line-height: 1; }
+.home p { margin: 10px 0 5px; }
+.home h2 { margin: 30px 0 10px; font-size: 30px; line-height: 1; }
+.links, .icons { display: flex; justify-content: center; }
+.links { gap: 40px; font-size: 25px; line-height: 35px; }
+.icons { gap: 16px; }
+.icons a { color: #fff; }
+.icons .linkedin { color: #4a9be8; }
+.icons .email { color: #f0716f; }
+.icons a:hover { opacity: .7; }
+.icons svg { display: block; width: 32px; height: 32px; fill: currentColor; }
